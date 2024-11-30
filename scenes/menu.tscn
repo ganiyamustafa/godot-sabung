@@ -1,0 +1,168 @@
+[gd_scene load_steps=13 format=3 uid="uid://c3ihwh4biw00a"]
+
+[ext_resource type="Texture2D" uid="uid://dahixl4oftpmw" path="res://src/bg-test.png" id="1_kl0d8"]
+[ext_resource type="Texture2D" uid="uid://3td7ash0s173" path="res://src/roll-btn.png" id="2_u7006"]
+[ext_resource type="Texture2D" uid="uid://ckk415jm41401" path="res://src/end-turn-btn.png" id="3_ihek3"]
+[ext_resource type="Script" path="res://scenes/roll_btn.gd" id="3_xd77b"]
+[ext_resource type="Texture2D" uid="uid://bh2ku83stnxam" path="res://src/coin-field.png" id="4_jc1jm"]
+[ext_resource type="Script" path="res://scenes/pet_shop.gd" id="4_ro5hd"]
+[ext_resource type="Script" path="res://scripts/valign_text.gd" id="5_hao55"]
+[ext_resource type="Texture2D" uid="uid://ca2xuqc63llta" path="res://src/tile-1.png" id="7_2bdan"]
+[ext_resource type="Script" path="res://scenes/currency_label.gd" id="8_l71nw"]
+[ext_resource type="Texture2D" uid="uid://bjw6pdbln75co" path="res://src/chr_0000_00.png" id="8_sacb2"]
+[ext_resource type="Texture2D" uid="uid://ccoqytu5ic22f" path="res://src/chr_0001_00.png" id="9_8l3l5"]
+
+[sub_resource type="RichTextEffect" id="RichTextEffect_wole0"]
+script = ExtResource("5_hao55")
+
+[node name="Menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 2.0
+offset_top = 3.0
+offset_right = 2.0
+offset_bottom = 3.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 1154.0
+offset_bottom = 639.0
+texture = ExtResource("1_kl0d8")
+expand_mode = 1
+
+[node name="ShopNPlay" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -1.0
+offset_top = 391.0
+offset_right = 1152.0
+offset_bottom = 641.0
+
+[node name="RollBtn" type="TextureButton" parent="ShopNPlay"]
+layout_mode = 0
+offset_left = 10.0
+offset_top = 175.0
+offset_right = 168.0
+offset_bottom = 239.0
+texture_normal = ExtResource("2_u7006")
+ignore_texture_size = true
+stretch_mode = 0
+script = ExtResource("3_xd77b")
+
+[node name="TextureButton2" type="TextureButton" parent="ShopNPlay"]
+layout_mode = 0
+offset_left = 928.0
+offset_top = 175.0
+offset_right = 1149.0
+offset_bottom = 239.0
+texture_normal = ExtResource("3_ihek3")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="PetShop" type="Control" parent="ShopNPlay"]
+anchors_preset = 0
+offset_left = 12.0
+offset_top = 1.0
+offset_right = 714.0
+offset_bottom = 160.0
+script = ExtResource("4_ro5hd")
+
+[node name="Player Info" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1148.0
+offset_bottom = 107.0
+
+[node name="Currency" type="TextureRect" parent="Player Info"]
+layout_mode = 0
+offset_left = 10.0
+offset_top = 8.0
+offset_right = 128.0
+offset_bottom = 65.0
+texture = ExtResource("4_jc1jm")
+expand_mode = 1
+
+[node name="CurrencyLabel" type="RichTextLabel" parent="Player Info/Currency"]
+layout_mode = 0
+offset_left = 57.0
+offset_top = 8.0
+offset_right = 116.0
+offset_bottom = 48.0
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+bbcode_enabled = true
+text = "[font_size=20][center][b][valign px=-4]10[/valign][/b][/center][/font_size]"
+scroll_active = false
+autowrap_mode = 0
+shortcut_keys_enabled = false
+custom_effects = [SubResource("RichTextEffect_wole0")]
+deselect_on_focus_loss_enabled = false
+drag_and_drop_selection_enabled = false
+script = ExtResource("8_l71nw")
+
+[node name="TmpControl" type="Control" parent="."]
+visible = false
+anchors_preset = 0
+offset_right = 1158.0
+offset_bottom = 638.0
+
+[node name="ShopBundle" type="Control" parent="TmpControl"]
+anchors_preset = 0
+offset_left = 24.0
+offset_top = 248.0
+offset_right = 166.0
+offset_bottom = 445.0
+
+[node name="Tier1" type="Control" parent="TmpControl/ShopBundle"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="chr0000" type="Control" parent="TmpControl/ShopBundle/Tier1"]
+anchors_preset = 0
+offset_right = 133.0
+offset_bottom = 203.0
+
+[node name="Tile" type="TextureRect" parent="TmpControl/ShopBundle/Tier1/chr0000"]
+layout_mode = 0
+offset_top = 98.0
+offset_right = 130.0
+offset_bottom = 198.0
+texture = ExtResource("7_2bdan")
+expand_mode = 1
+
+[node name="Char" type="TextureRect" parent="TmpControl/ShopBundle/Tier1/chr0000"]
+layout_mode = 0
+offset_left = 26.0
+offset_top = 35.0
+offset_right = 106.0
+offset_bottom = 165.0
+texture = ExtResource("8_sacb2")
+expand_mode = 4
+
+[node name="chr0001" type="Control" parent="TmpControl/ShopBundle/Tier1"]
+anchors_preset = 0
+offset_right = 133.0
+offset_bottom = 203.0
+
+[node name="Tile" type="TextureRect" parent="TmpControl/ShopBundle/Tier1/chr0001"]
+layout_mode = 0
+offset_top = 98.0
+offset_right = 130.0
+offset_bottom = 198.0
+texture = ExtResource("7_2bdan")
+expand_mode = 1
+
+[node name="Char" type="TextureRect" parent="TmpControl/ShopBundle/Tier1/chr0001"]
+layout_mode = 0
+offset_left = 26.0
+offset_top = 35.0
+offset_right = 106.0
+offset_bottom = 165.0
+texture = ExtResource("9_8l3l5")
+expand_mode = 4
+
+[node name="SubViewport" type="SubViewport" parent="."]
