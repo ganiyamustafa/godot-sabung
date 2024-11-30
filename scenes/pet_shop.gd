@@ -13,6 +13,10 @@ extends Control
 	#
 	#return pet_tile_node
 	
+func _remove_children() -> void:
+	for child in get_children():
+		child.queue_free()
+	
 func _create_char_shop_node(pos_x: int, pos_y: int, width: int = 130, height: int = 100) -> Control:
 	var char_nodes = get_node("../../TmpControl/ShopBundle/Tier1").get_children()
 	var char_shop_control: Control = RandomUtils.choice(char_nodes).duplicate()
@@ -21,6 +25,9 @@ func _create_char_shop_node(pos_x: int, pos_y: int, width: int = 130, height: in
 	return char_shop_control
 	
 func add_pet_tile_node_on_ready() -> void:
+#	remove all children so not stacked when regenerate
+	_remove_children()
+	
 	var pet_tile_w = 130
 	var pet_tile_h = 100
 	var pet_tile_pos_x = 24
