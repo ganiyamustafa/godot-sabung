@@ -8,6 +8,8 @@ func _refresh_shop() -> void:
 	if Global.coin > 0:
 		_get_pet_shop_node().add_pet_tile_node_on_ready()
 		Global.coin -= 1
+		
+	Global.char_selected_id = null
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
