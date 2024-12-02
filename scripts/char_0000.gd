@@ -1,8 +1,12 @@
 extends TextureButton
 
-var is_in_shop = true
-var is_freeze = false
 var original_texture_normal = null
+
+const id = "0000"
+
+@export var level = 1
+@export var health = 2
+@export var attack = 2
 
 func _get_select_hover_node() -> TextureRect:
 	return get_tree().get_nodes_in_group("UI")[0]
@@ -45,6 +49,7 @@ func _process(delta: float) -> void:
 	
 func _get_drag_data(at_position: Vector2) -> Variant:
 	var preview_node = duplicate()
+	print(level)
 	
 #	change texture to null
 	original_texture_normal = texture_normal
@@ -52,14 +57,42 @@ func _get_drag_data(at_position: Vector2) -> Variant:
 	
 #	set selected char
 	Global.char_dragged_id = get_instance_id()
-	return preview_node
 
+	return preview_node
+	
+func _can_drop_data(at_position: Vector2, data: Variant) -> bool:
+	var dragable_original_node = instance_from_id(Global.char_dragged_id)
+	return (data.is_in_group("char") or data.is_in_group("item")) and not is_in_group("shop") and get_instance_id() != dragable_original_node.get_instance_id()
+	
+func _replace_position_tile(at_position: Vector2, data: Variant) -> void:
+	var dragged_original_node = instance_from_id(Global.char_dragged_id)
+	
+#	add char to parent of dragable original node
+	dragged_original_node.get_parent().add_child(get_node(".").duplicate())
+	
+#	remove original node
+	dragged_original_node.queue_free()
+	queue_free()
+	
+#	add dragable node to parent
+	get_parent().add_child(data)
+
+func _drop_data(at_position: Vector2, data: Variant) -> void:
+	var dragged_original_node = instance_from_id(Global.char_dragged_id)
+	
+	print(data.id == id)
+	if data.id == id:
+		level += data.level
+		dragged_original_node.get_parent().add_to_group("empty_space")
+		dragged_original_node.queue_free()
+		return
+	
+	if not (data.is_in_group("shop") and is_in_group("shop")):
+		_replace_position_tile(at_position, data)
+	
 func _notification(what: int) -> void:
 	if what == NOTIFICATION_DRAG_END and not is_drag_successful() and get_instance_id() == Global.char_dragged_id:
 		texture_normal = original_texture_normal
 		Global.char_dragged_id = null
-	
-func _can_drop_data(at_position: Vector2, data: Variant) -> bool:
-	return data.is_in_group("char") and not is_in_shop
 		
 	

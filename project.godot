@@ -23,6 +23,11 @@ Global="*res://scripts/global.gd"
 
 window/stretch/mode="viewport"
 
+[global_group]
+
+tier1=""
+helper=""
+
 [rendering]
 
 renderer/rendering_method="gl_compatibility"

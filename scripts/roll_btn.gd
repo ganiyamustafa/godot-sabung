@@ -6,7 +6,7 @@ func _get_pet_shop_node() -> Control:
 	
 func _refresh_shop() -> void:
 	if Global.coin > 0:
-		_get_pet_shop_node().add_pet_tile_node_on_ready()
+		Global.shop_rolled.emit()
 		Global.coin -= 1
 		
 	Global.char_selected_id = null

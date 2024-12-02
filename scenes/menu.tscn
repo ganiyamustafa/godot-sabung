@@ -1,24 +1,25 @@
-[gd_scene load_steps=22 format=3 uid="uid://c3ihwh4biw00a"]
+[gd_scene load_steps=23 format=3 uid="uid://c3ihwh4biw00a"]
 
 [ext_resource type="Texture2D" uid="uid://dahixl4oftpmw" path="res://src/bg-test.png" id="1_kl0d8"]
 [ext_resource type="Texture2D" uid="uid://3td7ash0s173" path="res://src/roll-btn.png" id="2_u7006"]
 [ext_resource type="Texture2D" uid="uid://ckk415jm41401" path="res://src/end-turn-btn.png" id="3_ihek3"]
-[ext_resource type="Script" path="res://scenes/roll_btn.gd" id="3_xd77b"]
+[ext_resource type="Script" path="res://scripts/roll_btn.gd" id="3_xd77b"]
 [ext_resource type="Texture2D" uid="uid://bh2ku83stnxam" path="res://src/coin-field.png" id="4_jc1jm"]
-[ext_resource type="Script" path="res://scenes/pet_shop.gd" id="4_ro5hd"]
+[ext_resource type="Script" path="res://scripts/pet_shop.gd" id="4_ro5hd"]
 [ext_resource type="Texture2D" uid="uid://c2y5kl1yjk5wt" path="res://src/freeze-btn.png" id="5_1pmui"]
 [ext_resource type="Script" path="res://scripts/valign_text.gd" id="5_hao55"]
-[ext_resource type="Script" path="res://scenes/freeze_btn.gd" id="6_d1pt0"]
-[ext_resource type="Script" path="res://scenes/select_hover.gd" id="6_jdorr"]
+[ext_resource type="Script" path="res://scripts/freeze_btn.gd" id="6_d1pt0"]
+[ext_resource type="Script" path="res://scripts/select_hover.gd" id="6_jdorr"]
 [ext_resource type="Texture2D" uid="uid://ca2xuqc63llta" path="res://src/tile-1.png" id="7_2bdan"]
-[ext_resource type="Script" path="res://scenes/freeze_btn_label.gd" id="8_21n8s"]
-[ext_resource type="Script" path="res://scenes/currency_label.gd" id="8_l71nw"]
+[ext_resource type="Script" path="res://scripts/freeze_btn_label.gd" id="8_21n8s"]
+[ext_resource type="Script" path="res://scripts/currency_label.gd" id="8_l71nw"]
 [ext_resource type="Texture2D" uid="uid://bjw6pdbln75co" path="res://src/chr_0000_00.png" id="8_sacb2"]
 [ext_resource type="Texture2D" uid="uid://ccoqytu5ic22f" path="res://src/chr_0001_00.png" id="9_8l3l5"]
-[ext_resource type="Script" path="res://scenes/char_0000.gd" id="11_3hit7"]
+[ext_resource type="Script" path="res://scripts/char_0000.gd" id="11_3hit7"]
 [ext_resource type="Texture2D" uid="uid://cn055uw1mc2vo" path="res://src/select-hover.png" id="13_ybpeq"]
-[ext_resource type="Script" path="res://scenes/tile.gd" id="15_3tln0"]
+[ext_resource type="Script" path="res://scripts/tile.gd" id="15_3tln0"]
 [ext_resource type="Texture2D" uid="uid://bb2v763772rbc" path="res://src/freeze-ice.png" id="18_a3wqe"]
+[ext_resource type="Script" path="res://scripts/char_0001.gd" id="19_u28wn"]
 
 [sub_resource type="RichTextEffect" id="RichTextEffect_qfbks"]
 script = ExtResource("5_hao55")
@@ -162,7 +163,7 @@ offset_top = 114.0
 offset_right = 1145.0
 offset_bottom = 407.0
 
-[node name="Tile1" type="Control" parent="MainTeam" groups=["dropable"]]
+[node name="Tile1" type="Control" parent="MainTeam" groups=["empty_space"]]
 anchors_preset = 0
 offset_left = 103.0
 offset_top = 10.0
@@ -171,6 +172,7 @@ offset_bottom = 213.0
 script = ExtResource("15_3tln0")
 
 [node name="Tile" type="TextureRect" parent="MainTeam/Tile1"]
+layout_mode = 0
 offset_left = 7.0
 offset_top = 101.0
 offset_right = 137.0
@@ -178,12 +180,13 @@ offset_bottom = 201.0
 texture = ExtResource("7_2bdan")
 expand_mode = 1
 
-[node name="Tile2" type="Control" parent="MainTeam"]
+[node name="Tile2" type="Control" parent="MainTeam" groups=["empty_space"]]
 anchors_preset = 0
 offset_left = 253.0
 offset_top = 10.0
 offset_right = 398.0
 offset_bottom = 213.0
+script = ExtResource("15_3tln0")
 
 [node name="Tile" type="TextureRect" parent="MainTeam/Tile2"]
 layout_mode = 0
@@ -261,12 +264,12 @@ anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="chr0000" type="Control" parent="TmpControl/ShopBundle/Tier1"]
+[node name="chr0000" type="Control" parent="TmpControl/ShopBundle"]
 anchors_preset = 0
 offset_right = 133.0
 offset_bottom = 203.0
 
-[node name="Tile" type="TextureRect" parent="TmpControl/ShopBundle/Tier1/chr0000"]
+[node name="Tile" type="TextureRect" parent="TmpControl/ShopBundle/chr0000"]
 layout_mode = 0
 offset_top = 98.0
 offset_right = 130.0
@@ -274,7 +277,7 @@ offset_bottom = 198.0
 texture = ExtResource("7_2bdan")
 expand_mode = 1
 
-[node name="Char" type="TextureButton" parent="TmpControl/ShopBundle/Tier1/chr0000" groups=["char"]]
+[node name="Char" type="TextureButton" parent="TmpControl/ShopBundle/chr0000" groups=["char", "helper", "shop", "tier1"]]
 layout_mode = 0
 offset_left = 25.0
 offset_top = 34.0
@@ -285,12 +288,12 @@ ignore_texture_size = true
 stretch_mode = 0
 script = ExtResource("11_3hit7")
 
-[node name="chr0001" type="Control" parent="TmpControl/ShopBundle/Tier1"]
+[node name="chr0001" type="Control" parent="TmpControl/ShopBundle"]
 anchors_preset = 0
 offset_right = 133.0
 offset_bottom = 203.0
 
-[node name="Tile" type="TextureRect" parent="TmpControl/ShopBundle/Tier1/chr0001"]
+[node name="Tile" type="TextureRect" parent="TmpControl/ShopBundle/chr0001"]
 layout_mode = 0
 offset_top = 98.0
 offset_right = 130.0
@@ -298,7 +301,7 @@ offset_bottom = 198.0
 texture = ExtResource("7_2bdan")
 expand_mode = 1
 
-[node name="Char" type="TextureButton" parent="TmpControl/ShopBundle/Tier1/chr0001"]
+[node name="Char" type="TextureButton" parent="TmpControl/ShopBundle/chr0001" groups=["char", "helper", "shop", "tier1"]]
 layout_mode = 0
 offset_left = 25.0
 offset_top = 34.0
@@ -307,7 +310,7 @@ offset_bottom = 164.0
 texture_normal = ExtResource("9_8l3l5")
 ignore_texture_size = true
 stretch_mode = 0
-script = ExtResource("11_3hit7")
+script = ExtResource("19_u28wn")
 
 [node name="IceFreeze" type="TextureRect" parent="TmpControl" groups=["UI"]]
 layout_mode = 0
