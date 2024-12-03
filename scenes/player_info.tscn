@@ -1,0 +1,42 @@
+[gd_scene load_steps=5 format=3 uid="uid://cbt6vshksmp2s"]
+
+[ext_resource type="Texture2D" uid="uid://bh2ku83stnxam" path="res://src/coin-field.png" id="1_wen8s"]
+[ext_resource type="Script" path="res://scripts/valign_text.gd" id="2_65c46"]
+[ext_resource type="Script" path="res://scripts/currency_label.gd" id="3_hx5sj"]
+
+[sub_resource type="RichTextEffect" id="RichTextEffect_wole0"]
+script = ExtResource("2_65c46")
+
+[node name="PlayerInfo" type="Node2D"]
+
+[node name="Player Info" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1148.0
+offset_bottom = 107.0
+
+[node name="Currency" type="TextureRect" parent="Player Info"]
+layout_mode = 0
+offset_left = 10.0
+offset_top = 8.0
+offset_right = 128.0
+offset_bottom = 65.0
+texture = ExtResource("1_wen8s")
+expand_mode = 1
+
+[node name="CurrencyLabel" type="RichTextLabel" parent="Player Info/Currency"]
+layout_mode = 0
+offset_left = 57.0
+offset_top = 8.0
+offset_right = 116.0
+offset_bottom = 48.0
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+bbcode_enabled = true
+text = "[font_size=20][center][b][valign px=-4]10[/valign][/b][/center][/font_size]"
+scroll_active = false
+autowrap_mode = 0
+shortcut_keys_enabled = false
+custom_effects = [SubResource("RichTextEffect_wole0")]
+deselect_on_focus_loss_enabled = false
+drag_and_drop_selection_enabled = false
+script = ExtResource("3_hx5sj")

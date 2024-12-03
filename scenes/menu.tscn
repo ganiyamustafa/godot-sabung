@@ -1,29 +1,12 @@
-[gd_scene load_steps=21 format=3 uid="uid://de74wqj3b1hf8"]
+[gd_scene load_steps=8 format=3 uid="uid://de74wqj3b1hf8"]
 
 [ext_resource type="Texture2D" uid="uid://dahixl4oftpmw" path="res://src/bg-test.png" id="1_kl0d8"]
-[ext_resource type="Texture2D" uid="uid://3td7ash0s173" path="res://src/roll-btn.png" id="2_u7006"]
-[ext_resource type="Texture2D" uid="uid://ckk415jm41401" path="res://src/end-turn-btn.png" id="3_ihek3"]
-[ext_resource type="Script" path="res://scripts/roll_btn.gd" id="3_xd77b"]
-[ext_resource type="Texture2D" uid="uid://bh2ku83stnxam" path="res://src/coin-field.png" id="4_jc1jm"]
-[ext_resource type="Script" path="res://scripts/pet_shop.gd" id="4_ro5hd"]
-[ext_resource type="Texture2D" uid="uid://c2y5kl1yjk5wt" path="res://src/freeze-btn.png" id="5_1pmui"]
-[ext_resource type="Script" path="res://scripts/valign_text.gd" id="5_hao55"]
-[ext_resource type="Script" path="res://scripts/freeze_btn.gd" id="6_d1pt0"]
-[ext_resource type="Script" path="res://scripts/select_hover.gd" id="6_jdorr"]
-[ext_resource type="Texture2D" uid="uid://ca2xuqc63llta" path="res://src/tile-1.png" id="7_2bdan"]
-[ext_resource type="Script" path="res://scripts/freeze_btn_label.gd" id="8_21n8s"]
-[ext_resource type="Script" path="res://scripts/currency_label.gd" id="8_l71nw"]
-[ext_resource type="Texture2D" uid="uid://cn055uw1mc2vo" path="res://src/select-hover.png" id="13_ybpeq"]
-[ext_resource type="Script" path="res://scripts/tile.gd" id="15_3tln0"]
-[ext_resource type="PackedScene" uid="uid://cfllqyfyqrppy" path="res://scenes/chr_0001.tscn" id="17_ut6ru"]
-[ext_resource type="PackedScene" uid="uid://byxbxykgejlrl" path="res://scenes/chr_0000.tscn" id="18_4fmel"]
+[ext_resource type="PackedScene" uid="uid://nxit81s8nt5w" path="res://scenes/shop_n_play.tscn" id="2_asv3n"]
+[ext_resource type="PackedScene" uid="uid://cbt6vshksmp2s" path="res://scenes/player_info.tscn" id="7_f8ime"]
+[ext_resource type="PackedScene" uid="uid://ce4xcerlkc6yh" path="res://scenes/active_team.tscn" id="9_veomw"]
+[ext_resource type="PackedScene" uid="uid://cfllqyfyqrppy" path="res://scenes/char/chr_0001.tscn" id="17_ut6ru"]
+[ext_resource type="PackedScene" uid="uid://byxbxykgejlrl" path="res://scenes/char/chr_0000.tscn" id="18_4fmel"]
 [ext_resource type="Texture2D" uid="uid://bb2v763772rbc" path="res://src/freeze-ice.png" id="18_a3wqe"]
-
-[sub_resource type="RichTextEffect" id="RichTextEffect_qfbks"]
-script = ExtResource("5_hao55")
-
-[sub_resource type="RichTextEffect" id="RichTextEffect_wole0"]
-script = ExtResource("5_hao55")
 
 [node name="Menu" type="Control"]
 layout_mode = 3
@@ -44,204 +27,7 @@ offset_bottom = 639.0
 texture = ExtResource("1_kl0d8")
 expand_mode = 1
 
-[node name="ShopNPlay" type="Control" parent="."]
-layout_mode = 3
-anchors_preset = 0
-offset_left = -1.0
-offset_top = 391.0
-offset_right = 1152.0
-offset_bottom = 641.0
-
-[node name="RollBtn" type="TextureButton" parent="ShopNPlay"]
-layout_mode = 0
-offset_left = 10.0
-offset_top = 175.0
-offset_right = 168.0
-offset_bottom = 239.0
-texture_normal = ExtResource("2_u7006")
-ignore_texture_size = true
-stretch_mode = 0
-script = ExtResource("3_xd77b")
-
-[node name="EndTurnBtn" type="TextureButton" parent="ShopNPlay"]
-layout_mode = 0
-offset_left = 928.0
-offset_top = 175.0
-offset_right = 1149.0
-offset_bottom = 239.0
-texture_normal = ExtResource("3_ihek3")
-ignore_texture_size = true
-stretch_mode = 0
-
-[node name="FreezeBtn" type="TextureButton" parent="ShopNPlay"]
-layout_mode = 0
-offset_left = 689.0
-offset_top = 175.0
-offset_right = 910.0
-offset_bottom = 239.0
-texture_normal = ExtResource("5_1pmui")
-ignore_texture_size = true
-stretch_mode = 0
-script = ExtResource("6_d1pt0")
-
-[node name="Label" type="RichTextLabel" parent="ShopNPlay/FreezeBtn"]
-layout_mode = 0
-offset_left = 10.0
-offset_right = 223.0
-offset_bottom = 64.0
-mouse_filter = 2
-bbcode_enabled = true
-text = "[valign px=-3][font_size=35][b]Freeze[/b][/font_size][/valign]"
-custom_effects = [SubResource("RichTextEffect_qfbks")]
-script = ExtResource("8_21n8s")
-
-[node name="SelectHover" type="TextureRect" parent="ShopNPlay" groups=["UI"]]
-layout_mode = 0
-offset_left = 30.0
-offset_top = -99.0
-offset_right = 149.0
-offset_bottom = 21.0
-texture = ExtResource("13_ybpeq")
-expand_mode = 1
-script = ExtResource("6_jdorr")
-
-[node name="SelectPressed" type="TextureRect" parent="ShopNPlay" groups=["UI"]]
-layout_mode = 0
-offset_left = 30.0
-offset_top = -99.0
-offset_right = 149.0
-offset_bottom = 21.0
-texture = ExtResource("13_ybpeq")
-expand_mode = 1
-script = ExtResource("6_jdorr")
-
-[node name="PetShop" type="Control" parent="ShopNPlay"]
-anchors_preset = 0
-offset_left = 12.0
-offset_top = 1.0
-offset_right = 714.0
-offset_bottom = 160.0
-script = ExtResource("4_ro5hd")
-
-[node name="Player Info" type="Control" parent="."]
-layout_mode = 3
-anchors_preset = 0
-offset_right = 1148.0
-offset_bottom = 107.0
-
-[node name="Currency" type="TextureRect" parent="Player Info"]
-layout_mode = 0
-offset_left = 10.0
-offset_top = 8.0
-offset_right = 128.0
-offset_bottom = 65.0
-texture = ExtResource("4_jc1jm")
-expand_mode = 1
-
-[node name="CurrencyLabel" type="RichTextLabel" parent="Player Info/Currency"]
-layout_mode = 0
-offset_left = 57.0
-offset_top = 8.0
-offset_right = 116.0
-offset_bottom = 48.0
-theme_override_colors/default_color = Color(0, 0, 0, 1)
-bbcode_enabled = true
-text = "[font_size=20][center][b][valign px=-4]10[/valign][/b][/center][/font_size]"
-scroll_active = false
-autowrap_mode = 0
-shortcut_keys_enabled = false
-custom_effects = [SubResource("RichTextEffect_wole0")]
-deselect_on_focus_loss_enabled = false
-drag_and_drop_selection_enabled = false
-script = ExtResource("8_l71nw")
-
-[node name="MainTeam" type="Control" parent="."]
-anchors_preset = 0
-offset_top = 114.0
-offset_right = 1145.0
-offset_bottom = 407.0
-
-[node name="Tile1" type="Control" parent="MainTeam" groups=["empty_space"]]
-anchors_preset = 0
-offset_left = 103.0
-offset_top = 10.0
-offset_right = 248.0
-offset_bottom = 213.0
-script = ExtResource("15_3tln0")
-
-[node name="Tile" type="TextureRect" parent="MainTeam/Tile1"]
-layout_mode = 0
-offset_left = 7.0
-offset_top = 101.0
-offset_right = 137.0
-offset_bottom = 201.0
-texture = ExtResource("7_2bdan")
-expand_mode = 1
-
-[node name="Tile2" type="Control" parent="MainTeam" groups=["empty_space"]]
-anchors_preset = 0
-offset_left = 253.0
-offset_top = 10.0
-offset_right = 398.0
-offset_bottom = 213.0
-script = ExtResource("15_3tln0")
-
-[node name="Tile" type="TextureRect" parent="MainTeam/Tile2"]
-layout_mode = 0
-offset_left = 7.0
-offset_top = 101.0
-offset_right = 137.0
-offset_bottom = 201.0
-texture = ExtResource("7_2bdan")
-expand_mode = 1
-
-[node name="Tile3" type="Control" parent="MainTeam"]
-anchors_preset = 0
-offset_left = 403.0
-offset_top = 10.0
-offset_right = 548.0
-offset_bottom = 213.0
-
-[node name="Tile" type="TextureRect" parent="MainTeam/Tile3"]
-layout_mode = 0
-offset_left = 7.0
-offset_top = 101.0
-offset_right = 137.0
-offset_bottom = 201.0
-texture = ExtResource("7_2bdan")
-expand_mode = 1
-
-[node name="Tile4" type="Control" parent="MainTeam"]
-anchors_preset = 0
-offset_left = 553.0
-offset_top = 7.0
-offset_right = 698.0
-offset_bottom = 210.0
-
-[node name="Tile" type="TextureRect" parent="MainTeam/Tile4"]
-layout_mode = 0
-offset_left = 7.0
-offset_top = 101.0
-offset_right = 137.0
-offset_bottom = 201.0
-texture = ExtResource("7_2bdan")
-expand_mode = 1
-
-[node name="Tile5" type="Control" parent="MainTeam"]
-anchors_preset = 0
-offset_left = 703.0
-offset_top = 7.0
-offset_right = 848.0
-offset_bottom = 210.0
-
-[node name="Tile" type="TextureRect" parent="MainTeam/Tile5"]
-layout_mode = 0
-offset_left = 7.0
-offset_top = 101.0
-offset_right = 137.0
-offset_bottom = 201.0
-texture = ExtResource("7_2bdan")
-expand_mode = 1
+[node name="ShopNPlay2" parent="." instance=ExtResource("2_asv3n")]
 
 [node name="TmpControl" type="Control" parent="."]
 visible = false
@@ -269,3 +55,7 @@ offset_right = 162.0
 offset_bottom = 427.0
 texture = ExtResource("18_a3wqe")
 expand_mode = 1
+
+[node name="ActiveTeam" parent="." instance=ExtResource("9_veomw")]
+
+[node name="PlayerInfo" parent="." instance=ExtResource("7_f8ime")]

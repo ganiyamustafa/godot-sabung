@@ -1,0 +1,96 @@
+[gd_scene load_steps=12 format=3 uid="uid://nxit81s8nt5w"]
+
+[ext_resource type="Texture2D" uid="uid://3td7ash0s173" path="res://src/roll-btn.png" id="1_ouvf8"]
+[ext_resource type="Script" path="res://scripts/roll_btn.gd" id="2_0cxg0"]
+[ext_resource type="Texture2D" uid="uid://ckk415jm41401" path="res://src/end-turn-btn.png" id="3_elkwr"]
+[ext_resource type="Texture2D" uid="uid://c2y5kl1yjk5wt" path="res://src/freeze-btn.png" id="4_3jqnj"]
+[ext_resource type="Script" path="res://scripts/freeze_btn.gd" id="5_q36se"]
+[ext_resource type="Script" path="res://scripts/valign_text.gd" id="6_d277q"]
+[ext_resource type="Script" path="res://scripts/freeze_btn_label.gd" id="7_otboa"]
+[ext_resource type="Texture2D" uid="uid://cn055uw1mc2vo" path="res://src/select-hover.png" id="8_ejlgi"]
+[ext_resource type="Script" path="res://scripts/select_hover.gd" id="9_agvam"]
+[ext_resource type="Script" path="res://scripts/pet_shop.gd" id="10_ac04d"]
+
+[sub_resource type="RichTextEffect" id="RichTextEffect_qfbks"]
+script = ExtResource("6_d277q")
+
+[node name="ShopNPlay" type="Node2D"]
+
+[node name="ShopNPlay" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -1.0
+offset_top = 391.0
+offset_right = 1152.0
+offset_bottom = 641.0
+
+[node name="RollBtn" type="TextureButton" parent="ShopNPlay"]
+layout_mode = 0
+offset_left = 10.0
+offset_top = 175.0
+offset_right = 168.0
+offset_bottom = 239.0
+texture_normal = ExtResource("1_ouvf8")
+ignore_texture_size = true
+stretch_mode = 0
+script = ExtResource("2_0cxg0")
+
+[node name="EndTurnBtn" type="TextureButton" parent="ShopNPlay"]
+layout_mode = 0
+offset_left = 928.0
+offset_top = 175.0
+offset_right = 1149.0
+offset_bottom = 239.0
+texture_normal = ExtResource("3_elkwr")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="FreezeBtn" type="TextureButton" parent="ShopNPlay"]
+layout_mode = 0
+offset_left = 689.0
+offset_top = 175.0
+offset_right = 910.0
+offset_bottom = 239.0
+texture_normal = ExtResource("4_3jqnj")
+ignore_texture_size = true
+stretch_mode = 0
+script = ExtResource("5_q36se")
+
+[node name="Label" type="RichTextLabel" parent="ShopNPlay/FreezeBtn"]
+layout_mode = 0
+offset_left = 10.0
+offset_right = 223.0
+offset_bottom = 64.0
+mouse_filter = 2
+bbcode_enabled = true
+text = "[valign px=-3][font_size=35][b]Freeze[/b][/font_size][/valign]"
+custom_effects = [SubResource("RichTextEffect_qfbks")]
+script = ExtResource("7_otboa")
+
+[node name="SelectHover" type="TextureRect" parent="ShopNPlay" groups=["UI"]]
+layout_mode = 0
+offset_left = 30.0
+offset_top = -99.0
+offset_right = 149.0
+offset_bottom = 21.0
+texture = ExtResource("8_ejlgi")
+expand_mode = 1
+script = ExtResource("9_agvam")
+
+[node name="SelectPressed" type="TextureRect" parent="ShopNPlay" groups=["UI"]]
+layout_mode = 0
+offset_left = 30.0
+offset_top = -99.0
+offset_right = 149.0
+offset_bottom = 21.0
+texture = ExtResource("8_ejlgi")
+expand_mode = 1
+script = ExtResource("9_agvam")
+
+[node name="PetShop" type="Control" parent="ShopNPlay"]
+anchors_preset = 0
+offset_left = 12.0
+offset_top = 1.0
+offset_right = 714.0
+offset_bottom = 160.0
+script = ExtResource("10_ac04d")

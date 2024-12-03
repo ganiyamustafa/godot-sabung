@@ -1,0 +1,95 @@
+[gd_scene load_steps=3 format=3 uid="uid://ce4xcerlkc6yh"]
+
+[ext_resource type="Script" path="res://scripts/tile.gd" id="1_cs4fw"]
+[ext_resource type="Texture2D" uid="uid://ca2xuqc63llta" path="res://src/tile-1.png" id="2_cqc04"]
+
+[node name="ActiveTeam" type="Node2D"]
+
+[node name="MainTeam" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_top = 114.0
+offset_right = 1145.0
+offset_bottom = 407.0
+
+[node name="Tile1" type="Control" parent="MainTeam" groups=["empty_space"]]
+anchors_preset = 0
+offset_left = 103.0
+offset_top = 10.0
+offset_right = 248.0
+offset_bottom = 213.0
+script = ExtResource("1_cs4fw")
+
+[node name="Tile" type="TextureRect" parent="MainTeam/Tile1"]
+layout_mode = 0
+offset_left = 7.0
+offset_top = 101.0
+offset_right = 137.0
+offset_bottom = 201.0
+texture = ExtResource("2_cqc04")
+expand_mode = 1
+
+[node name="Tile2" type="Control" parent="MainTeam" groups=["empty_space"]]
+anchors_preset = 0
+offset_left = 253.0
+offset_top = 10.0
+offset_right = 398.0
+offset_bottom = 213.0
+script = ExtResource("1_cs4fw")
+
+[node name="Tile" type="TextureRect" parent="MainTeam/Tile2"]
+layout_mode = 0
+offset_left = 7.0
+offset_top = 101.0
+offset_right = 137.0
+offset_bottom = 201.0
+texture = ExtResource("2_cqc04")
+expand_mode = 1
+
+[node name="Tile3" type="Control" parent="MainTeam"]
+anchors_preset = 0
+offset_left = 403.0
+offset_top = 10.0
+offset_right = 548.0
+offset_bottom = 213.0
+
+[node name="Tile" type="TextureRect" parent="MainTeam/Tile3"]
+layout_mode = 0
+offset_left = 7.0
+offset_top = 101.0
+offset_right = 137.0
+offset_bottom = 201.0
+texture = ExtResource("2_cqc04")
+expand_mode = 1
+
+[node name="Tile4" type="Control" parent="MainTeam"]
+anchors_preset = 0
+offset_left = 553.0
+offset_top = 7.0
+offset_right = 698.0
+offset_bottom = 210.0
+
+[node name="Tile" type="TextureRect" parent="MainTeam/Tile4"]
+layout_mode = 0
+offset_left = 7.0
+offset_top = 101.0
+offset_right = 137.0
+offset_bottom = 201.0
+texture = ExtResource("2_cqc04")
+expand_mode = 1
+
+[node name="Tile5" type="Control" parent="MainTeam"]
+anchors_preset = 0
+offset_left = 703.0
+offset_top = 7.0
+offset_right = 848.0
+offset_bottom = 210.0
+
+[node name="Tile" type="TextureRect" parent="MainTeam/Tile5"]
+layout_mode = 0
+offset_left = 7.0
+offset_top = 101.0
+offset_right = 137.0
+offset_bottom = 201.0
+texture = ExtResource("2_cqc04")
+expand_mode = 1
