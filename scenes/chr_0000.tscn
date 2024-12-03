@@ -1,0 +1,32 @@
+[gd_scene load_steps=4 format=3 uid="uid://byxbxykgejlrl"]
+
+[ext_resource type="Texture2D" uid="uid://ca2xuqc63llta" path="res://src/tile-1.png" id="1_mvqeo"]
+[ext_resource type="Texture2D" uid="uid://bjw6pdbln75co" path="res://src/chr_0000_00.png" id="2_5oqks"]
+[ext_resource type="Script" path="res://scripts/char_0000.gd" id="3_jepmq"]
+
+[node name="Chr0000" type="Node2D"]
+
+[node name="chr0000" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 133.0
+offset_bottom = 203.0
+
+[node name="Tile" type="TextureRect" parent="chr0000"]
+layout_mode = 0
+offset_top = 98.0
+offset_right = 130.0
+offset_bottom = 198.0
+texture = ExtResource("1_mvqeo")
+expand_mode = 1
+
+[node name="Char" type="TextureButton" parent="chr0000" groups=["char", "helper", "shop", "tier1"]]
+layout_mode = 0
+offset_left = 25.0
+offset_top = 34.0
+offset_right = 105.0
+offset_bottom = 164.0
+texture_normal = ExtResource("2_5oqks")
+ignore_texture_size = true
+stretch_mode = 0
+script = ExtResource("3_jepmq")
