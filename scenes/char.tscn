@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://ckxp4ts07iuu5"]
+
+[ext_resource type="Texture2D" uid="uid://ca2xuqc63llta" path="res://src/tile-1.png" id="1_6i0r5"]
+[ext_resource type="Texture2D" uid="uid://bjw6pdbln75co" path="res://src/chr_0000_00.png" id="2_c0mr3"]
+[ext_resource type="Script" path="res://scripts/char_drag_n_drop.gd" id="3_ce08o"]
+
+[node name="Char" type="Node2D"]
+
+[node name="Tile" type="TextureRect" parent="."]
+offset_top = 98.0
+offset_right = 130.0
+offset_bottom = 198.0
+texture = ExtResource("1_6i0r5")
+expand_mode = 1
+
+[node name="Char" type="TextureButton" parent="."]
+offset_left = 25.0
+offset_top = 34.0
+offset_right = 105.0
+offset_bottom = 164.0
+texture_normal = ExtResource("2_c0mr3")
+ignore_texture_size = true
+stretch_mode = 0
+script = ExtResource("3_ce08o")

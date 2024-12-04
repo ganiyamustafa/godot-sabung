@@ -1,11 +1,12 @@
-[gd_scene load_steps=8 format=3 uid="uid://de74wqj3b1hf8"]
+[gd_scene load_steps=9 format=3 uid="uid://de74wqj3b1hf8"]
 
 [ext_resource type="Texture2D" uid="uid://dahixl4oftpmw" path="res://src/bg-test.png" id="1_kl0d8"]
 [ext_resource type="PackedScene" uid="uid://nxit81s8nt5w" path="res://scenes/shop_n_play.tscn" id="2_asv3n"]
+[ext_resource type="PackedScene" uid="uid://ckxp4ts07iuu5" path="res://scenes/char.tscn" id="4_jl35n"]
+[ext_resource type="Script" path="res://scripts/chr_0001.gd" id="5_0od5p"]
+[ext_resource type="Script" path="res://scripts/chr_0000.gd" id="5_r5gk0"]
 [ext_resource type="PackedScene" uid="uid://cbt6vshksmp2s" path="res://scenes/player_info.tscn" id="7_f8ime"]
 [ext_resource type="PackedScene" uid="uid://ce4xcerlkc6yh" path="res://scenes/active_team.tscn" id="9_veomw"]
-[ext_resource type="PackedScene" uid="uid://cfllqyfyqrppy" path="res://scenes/char/chr_0001.tscn" id="17_ut6ru"]
-[ext_resource type="PackedScene" uid="uid://byxbxykgejlrl" path="res://scenes/char/chr_0000.tscn" id="18_4fmel"]
 [ext_resource type="Texture2D" uid="uid://bb2v763772rbc" path="res://src/freeze-ice.png" id="18_a3wqe"]
 
 [node name="Menu" type="Control"]
@@ -27,7 +28,7 @@ offset_bottom = 639.0
 texture = ExtResource("1_kl0d8")
 expand_mode = 1
 
-[node name="ShopNPlay2" parent="." instance=ExtResource("2_asv3n")]
+[node name="ShopNPlay" parent="." instance=ExtResource("2_asv3n")]
 
 [node name="TmpControl" type="Control" parent="."]
 visible = false
@@ -43,9 +44,11 @@ offset_top = 248.0
 offset_right = 166.0
 offset_bottom = 445.0
 
-[node name="Chr0000" parent="TmpControl/ShopBundle" instance=ExtResource("18_4fmel")]
+[node name="chr_0001" parent="TmpControl/ShopBundle" groups=["char", "helper", "shop", "tier1"] instance=ExtResource("4_jl35n")]
+script = ExtResource("5_0od5p")
 
-[node name="Chr0001" parent="TmpControl/ShopBundle" instance=ExtResource("17_ut6ru")]
+[node name="chr_0000" parent="TmpControl/ShopBundle" groups=["char", "helper", "shop", "tier1"] instance=ExtResource("4_jl35n")]
+script = ExtResource("5_r5gk0")
 
 [node name="IceFreeze" type="TextureRect" parent="TmpControl" groups=["UI"]]
 layout_mode = 0
@@ -53,9 +56,10 @@ offset_left = 12.0
 offset_top = 277.0
 offset_right = 162.0
 offset_bottom = 427.0
+mouse_filter = 2
 texture = ExtResource("18_a3wqe")
 expand_mode = 1
 
-[node name="ActiveTeam" parent="." instance=ExtResource("9_veomw")]
-
 [node name="PlayerInfo" parent="." instance=ExtResource("7_f8ime")]
+
+[node name="ActiveTeam" parent="." instance=ExtResource("9_veomw")]

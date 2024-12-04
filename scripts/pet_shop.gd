@@ -16,7 +16,7 @@ extends Control
 func _remove_children() -> void:
 	for child in get_children():
 #		only remove not freezed char
-		if child.get_node("./Char") and not child.get_node("./Char").is_in_group("freeze"):
+		if not child.is_in_group("freeze"):
 			child.queue_free()
 
 func _get_char_shop_filter(data: Node) -> bool:
@@ -41,10 +41,10 @@ func _get_shop_datas_by_minimum_tier(tier: int = 1) -> Array:
 	
 	return [shop_char_datas, shop_item_datas]
 	
-func _create_char_shop_node(char_nodes: Array[Node], pos_x: int, pos_y: int, width: int = 130, height: int = 100) -> Control:
+func _create_char_shop_node(char_nodes: Array[Node], pos_x: int, pos_y: int, width: int = 130, height: int = 100) -> Node:
 #	create new random char node
-	var char_shop_control: Control = RandomUtils.choice(char_nodes).get_parent().duplicate()
-	char_shop_control.get_node("./Char").remove_from_group("helper")
+	var char_shop_control = RandomUtils.choice(char_nodes).duplicate()
+	char_shop_control.remove_from_group("helper")
 	
 #	set char node position		
 	char_shop_control.set_position(Vector2(pos_x, pos_y))
@@ -59,7 +59,7 @@ func _get_freeze_char_node():
 	
 	for child in get_children():
 #		append child if char is freeze
-		if child.get_node("./Char") and child.get_node("./Char").is_in_group("freeze"):
+		if child.is_in_group("freeze"):
 			freeze_char.append(child)
 			
 	return freeze_char

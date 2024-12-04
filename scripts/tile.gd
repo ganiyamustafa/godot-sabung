@@ -1,19 +1,16 @@
 extends Control
 
-
-func _can_drop_data(at_position: Vector2, data: Variant) -> bool:
-	return data.is_in_group("char") and is_in_group("empty_space")
-
-func _drop_data(at_position: Vector2, data: Variant) -> void:
+func drop_char_data(at_position: Vector2, data: Variant) -> void:
 	var dragged_original_node = instance_from_id(Global.char_dragged_id)
+	var dragged_original_parent_node = dragged_original_node.get_parent()
 	
 #	remove ice freeze from node
-	if data.is_in_group("freeze"):
-		data.remove_child(data.get_node("IceFreeze"))
+	if dragged_original_parent_node.is_in_group("freeze"):
+		dragged_original_parent_node.remove_child(dragged_original_parent_node.get_node("./IceFreeze"))
 		
 #	remove before space to empty
 	if not dragged_original_node.is_in_group("shop"):
-		dragged_original_node.get_parent().add_to_group("empty_space")
+		dragged_original_parent_node.get_parent().add_to_group("empty_space")
 	
 #	remove char from group
 	data.remove_from_group("freeze")
@@ -26,8 +23,16 @@ func _drop_data(at_position: Vector2, data: Variant) -> void:
 #	remove from empty space group
 	remove_from_group("empty_space")
 	
+	data.set_position(Vector2(9, 0))
+	
 #	add node to tile
 	add_child(data)
+
+func _can_drop_data(at_position: Vector2, data: Variant) -> bool:
+	return data.is_in_group("char") and is_in_group("empty_space")
+
+func _drop_data(at_position: Vector2, data: Variant) -> void:
+	drop_char_data(at_position, data)
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:

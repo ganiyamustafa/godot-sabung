@@ -2,7 +2,7 @@ extends TextureButton
 
 func _get_char_selected_node() -> Node:
 	if Global.char_selected_id:
-		return instance_from_id(Global.char_selected_id)
+		return instance_from_id(Global.char_selected_id).get_parent()
 		
 	return null
 
@@ -14,7 +14,7 @@ func _get_ice_node() -> Node:
 
 func _add_ice_node_as_char_shop_child(char_node: Node) -> void:
 	var ice_node = _get_ice_node()
-	ice_node.set_position(Vector2(-40, -5))
+	ice_node.set_position(Vector2(-15, 25))
 	char_node.add_child(ice_node)
 	
 func _remove_ice_node_from_char_shop_child(char_node: Node) -> void:

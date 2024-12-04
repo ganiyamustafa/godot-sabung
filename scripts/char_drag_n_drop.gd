@@ -40,7 +40,11 @@ func _ready() -> void:
 	connect("mouse_exited", _on_mouse_exited)
 	
 func _get_drag_data(at_position: Vector2) -> Variant:
-	var preview_node = duplicate()
+	var preview_node = get_parent().duplicate()
+	if preview_node.is_in_group("freeze"):
+		preview_node.remove_child(preview_node.get_node("./IceFreeze"))
+
+	preview_node.get_node("./Tile").visible = false
 	
 #	change texture to null
 	original_texture_normal = texture_normal
@@ -53,34 +57,56 @@ func _get_drag_data(at_position: Vector2) -> Variant:
 	
 func _can_drop_data(at_position: Vector2, data: Variant) -> bool:
 	var dragable_original_node = instance_from_id(Global.char_dragged_id)
-	return (data.is_in_group("char") or data.is_in_group("item")) and not is_in_group("shop") and not is_in_group("item") and get_instance_id() != dragable_original_node.get_instance_id()
+	var empty_spaces = get_tree().get_nodes_in_group("empty_space").slice(1)
+	var char_node = get_parent()
+	
+	return (data.is_in_group("char") or data.is_in_group("item")) and not char_node.is_in_group(
+		"shop") and get_instance_id() != dragable_original_node.get_instance_id() and (
+			empty_spaces or data.id == char_node.id
+		)
 	
 func _replace_position_tile(at_position: Vector2, data: Variant) -> void:
 	var dragged_original_node = instance_from_id(Global.char_dragged_id)
+	var dragged_char_node = dragged_original_node.get_parent()
+	var dragged_tile_node = dragged_original_node.get_parent().get_parent()
+	var char_node = get_parent()
+	var tile_node = char_node.get_parent()
 	
 #	add char to parent of dragable original node
-	dragged_original_node.get_parent().add_child(get_node(".").duplicate())
+	dragged_tile_node.add_child(get_parent().duplicate())
 	
 #	remove original node
-	dragged_original_node.queue_free()
-	queue_free()
+	dragged_char_node.queue_free()
+	char_node.queue_free()
 	
 #	add dragable node to parent
-	get_parent().add_child(data)
+	tile_node.add_child(data)
 
 func _drop_char_data(at_position: Vector2, data: Variant) -> void:
 	var dragged_original_node = instance_from_id(Global.char_dragged_id)
-	var this = get_node(".")
+	var dragged_char_node = dragged_original_node.get_parent()
+	var dragged_tile_node = dragged_char_node.get_parent()
+	var char_node = get_parent()
+	#var tile_node = char_node.get_parent()
 	
-	print(owner)
-	if data.id == this.id:
-		this.level += data.level
-		dragged_original_node.get_parent().add_to_group("empty_space")
-		dragged_original_node.queue_free()
+	if dragged_char_node.id == char_node.id:
+		char_node.level += dragged_char_node.level
+		dragged_tile_node.add_to_group("empty_space")
+		
+		if not dragged_char_node.is_in_group("shop"):
+			dragged_char_node.queue_free()
+			
 		return
 		
-	if not (data.is_in_group("shop") and is_in_group("shop")):
-		_replace_position_tile(at_position, data)
+	if not (data.is_in_group("shop") or char_node.is_in_group("shop")):
+		return _replace_position_tile(at_position, data)
+		
+	if data.is_in_group("shop"):
+		var empty_spaces = get_tree().get_nodes_in_group("empty_space").slice(1)
+		if empty_spaces:
+			var empty_space = RandomUtils.choice(empty_spaces)
+			empty_space.drop_char_data(at_position, data)
+			return
 
 func _drop_item_data(at_position: Vector2, data: Variant) -> void:
 	pass

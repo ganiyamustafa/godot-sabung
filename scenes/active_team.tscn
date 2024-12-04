@@ -26,6 +26,7 @@ offset_left = 7.0
 offset_top = 101.0
 offset_right = 137.0
 offset_bottom = 201.0
+mouse_filter = 2
 texture = ExtResource("2_cqc04")
 expand_mode = 1
 
