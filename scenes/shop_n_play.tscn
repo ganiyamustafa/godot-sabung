@@ -27,9 +27,9 @@ offset_bottom = 641.0
 [node name="RollBtn" type="TextureButton" parent="ShopNPlay"]
 layout_mode = 0
 offset_left = 10.0
-offset_top = 175.0
-offset_right = 168.0
-offset_bottom = 239.0
+offset_top = 1493.0
+offset_right = 536.0
+offset_bottom = 1706.0
 texture_normal = ExtResource("1_ouvf8")
 ignore_texture_size = true
 stretch_mode = 0
@@ -37,20 +37,20 @@ script = ExtResource("2_0cxg0")
 
 [node name="EndTurnBtn" type="TextureButton" parent="ShopNPlay"]
 layout_mode = 0
-offset_left = 928.0
-offset_top = 175.0
-offset_right = 1149.0
-offset_bottom = 239.0
+offset_left = 3005.0
+offset_top = 1493.0
+offset_right = 3741.0
+offset_bottom = 1706.0
 texture_normal = ExtResource("3_elkwr")
 ignore_texture_size = true
 stretch_mode = 0
 
 [node name="FreezeBtn" type="TextureButton" parent="ShopNPlay"]
 layout_mode = 0
-offset_left = 689.0
-offset_top = 175.0
-offset_right = 910.0
-offset_bottom = 239.0
+offset_left = 2183.0
+offset_top = 1493.0
+offset_right = 2919.0
+offset_bottom = 1706.0
 texture_normal = ExtResource("4_3jqnj")
 ignore_texture_size = true
 stretch_mode = 0
@@ -58,12 +58,12 @@ script = ExtResource("5_q36se")
 
 [node name="Label" type="RichTextLabel" parent="ShopNPlay/FreezeBtn"]
 layout_mode = 0
-offset_left = 10.0
-offset_right = 223.0
-offset_bottom = 64.0
+offset_left = 55.0
+offset_right = 585.0
+offset_bottom = 181.0
 mouse_filter = 2
 bbcode_enabled = true
-text = "[valign px=-3][font_size=35][b]Freeze[/b][/font_size][/valign]"
+text = "[valign px=-25][font_size=100][b]Freeze[/b][/font_size][/valign]"
 custom_effects = [SubResource("RichTextEffect_qfbks")]
 script = ExtResource("7_otboa")
 
@@ -71,8 +71,8 @@ script = ExtResource("7_otboa")
 layout_mode = 0
 offset_left = 30.0
 offset_top = -99.0
-offset_right = 149.0
-offset_bottom = 21.0
+offset_right = 426.0
+offset_bottom = 301.0
 texture = ExtResource("8_ejlgi")
 expand_mode = 1
 script = ExtResource("9_agvam")
@@ -81,16 +81,15 @@ script = ExtResource("9_agvam")
 layout_mode = 0
 offset_left = 30.0
 offset_top = -99.0
-offset_right = 149.0
-offset_bottom = 21.0
+offset_right = 426.0
+offset_bottom = 301.0
 texture = ExtResource("8_ejlgi")
 expand_mode = 1
 script = ExtResource("9_agvam")
 
 [node name="PetShop" type="Control" parent="ShopNPlay"]
 anchors_preset = 0
-offset_left = 12.0
-offset_top = 1.0
-offset_right = 714.0
-offset_bottom = 160.0
+offset_top = 807.0
+offset_right = 2340.0
+offset_bottom = 1337.0
 script = ExtResource("10_ac04d")

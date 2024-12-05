@@ -1,24 +1,95 @@
-[gd_scene load_steps=4 format=3 uid="uid://ckxp4ts07iuu5"]
+[gd_scene load_steps=10 format=3 uid="uid://ckxp4ts07iuu5"]
 
 [ext_resource type="Texture2D" uid="uid://ca2xuqc63llta" path="res://src/tile-1.png" id="1_6i0r5"]
 [ext_resource type="Texture2D" uid="uid://bjw6pdbln75co" path="res://src/chr_0000_00.png" id="2_c0mr3"]
 [ext_resource type="Script" path="res://scripts/char_drag_n_drop.gd" id="3_ce08o"]
+[ext_resource type="Texture2D" uid="uid://dhsldo05datlk" path="res://src/char-stat-bar.png" id="4_ho3xr"]
+[ext_resource type="Script" path="res://scripts/stat_bar.gd" id="5_etu3y"]
+[ext_resource type="Script" path="res://scripts/valign_text.gd" id="6_y0cn3"]
+[ext_resource type="Script" path="res://scripts/level_bar.gd" id="7_03rr8"]
+[ext_resource type="Texture2D" uid="uid://b757b4cudnvy1" path="res://src/level-empty-bar.png" id="7_pqlmk"]
+
+[sub_resource type="RichTextEffect" id="RichTextEffect_7eklj"]
+script = ExtResource("6_y0cn3")
 
 [node name="Char" type="Node2D"]
 
 [node name="Tile" type="TextureRect" parent="."]
 offset_top = 98.0
-offset_right = 130.0
-offset_bottom = 198.0
+offset_right = 433.0
+offset_bottom = 431.0
 texture = ExtResource("1_6i0r5")
 expand_mode = 1
 
 [node name="Char" type="TextureButton" parent="."]
-offset_left = 25.0
-offset_top = 34.0
-offset_right = 105.0
-offset_bottom = 164.0
+offset_left = 120.0
+offset_top = -116.0
+offset_right = 344.0
+offset_bottom = 317.0
 texture_normal = ExtResource("2_c0mr3")
 ignore_texture_size = true
-stretch_mode = 0
+stretch_mode = 4
 script = ExtResource("3_ce08o")
+
+[node name="StatBar" type="TextureRect" parent="."]
+offset_left = 21.0
+offset_top = 278.0
+offset_right = 421.0
+offset_bottom = 544.0
+pivot_offset = Vector2(52, 47)
+texture = ExtResource("4_ho3xr")
+expand_mode = 1
+stretch_mode = 4
+script = ExtResource("5_etu3y")
+
+[node name="Attack" type="RichTextLabel" parent="StatBar"]
+layout_mode = 0
+offset_left = 9.0
+offset_top = 68.0
+offset_right = 150.0
+offset_bottom = 210.0
+bbcode_enabled = true
+text = "[font_size=60][valign px=-29][center][b]20[/b][/center][/valign][/font_size]"
+custom_effects = [SubResource("RichTextEffect_7eklj")]
+
+[node name="Health" type="RichTextLabel" parent="StatBar"]
+layout_mode = 0
+offset_left = 228.0
+offset_top = 62.0
+offset_right = 387.0
+offset_bottom = 197.0
+bbcode_enabled = true
+text = "[font_size=60][valign px=-20][center][b]20[/b][/center][/valign][/font_size]"
+custom_effects = [SubResource("RichTextEffect_7eklj")]
+
+[node name="LevelBar" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -2.0
+offset_top = -272.0
+offset_right = 411.0
+offset_bottom = -140.0
+script = ExtResource("7_03rr8")
+
+[node name="Bar" type="TextureRect" parent="LevelBar"]
+visible = false
+layout_mode = 0
+offset_left = 61.0
+offset_top = 51.0
+offset_right = 221.0
+offset_bottom = 138.0
+pivot_offset = Vector2(363, 128)
+texture = ExtResource("7_pqlmk")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="bar2" type="TextureRect" parent="LevelBar"]
+visible = false
+layout_mode = 0
+offset_left = 212.0
+offset_top = 51.0
+offset_right = 372.0
+offset_bottom = 138.0
+pivot_offset = Vector2(-459, 181)
+texture = ExtResource("7_pqlmk")
+expand_mode = 1

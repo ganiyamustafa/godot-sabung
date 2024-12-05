@@ -8,4 +8,4 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	text = "[font_size=20][center][b][valign px=-4]" + str(Global.coin) + "[/valign][/b][/center][/font_size]"
+	text = "[font_size=80][center][b][valign px=-4]" + str(Global.coin) + "[/valign][/b][/center][/font_size]"

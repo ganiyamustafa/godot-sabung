@@ -12,27 +12,27 @@ script = ExtResource("2_65c46")
 [node name="Player Info" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 0
-offset_right = 1148.0
-offset_bottom = 107.0
+offset_right = 3840.0
+offset_bottom = 200.0
 
 [node name="Currency" type="TextureRect" parent="Player Info"]
 layout_mode = 0
 offset_left = 10.0
 offset_top = 8.0
-offset_right = 128.0
-offset_bottom = 65.0
+offset_right = 403.0
+offset_bottom = 198.0
 texture = ExtResource("1_wen8s")
 expand_mode = 1
 
 [node name="CurrencyLabel" type="RichTextLabel" parent="Player Info/Currency"]
 layout_mode = 0
-offset_left = 57.0
-offset_top = 8.0
-offset_right = 116.0
-offset_bottom = 48.0
+offset_left = 176.0
+offset_top = 33.0
+offset_right = 383.0
+offset_bottom = 152.0
 theme_override_colors/default_color = Color(0, 0, 0, 1)
 bbcode_enabled = true
-text = "[font_size=20][center][b][valign px=-4]10[/valign][/b][/center][/font_size]"
+text = "[font_size=80][center][b][valign px=-4]10[/valign][/b][/center][/font_size]"
 scroll_active = false
 autowrap_mode = 0
 shortcut_keys_enabled = false

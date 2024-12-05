@@ -73,10 +73,10 @@ func add_pet_tile_node_on_ready() -> void:
 	var char_nodes = shop_datas[0]
 	var item_nodes = shop_datas[1]
 	
-	var pet_tile_w = 130
-	var pet_tile_h = 100
+	var pet_tile_w = 433
+	var pet_tile_h = 333
 	var pet_tile_pos_x = 24
-	var pet_tile_pos_y = -50
+	var pet_tile_pos_y = 60
 	var spacing = 20
 	
 #	get all freezen char shop

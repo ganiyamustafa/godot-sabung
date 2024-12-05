@@ -14,7 +14,7 @@ func _get_ice_node() -> Node:
 
 func _add_ice_node_as_char_shop_child(char_node: Node) -> void:
 	var ice_node = _get_ice_node()
-	ice_node.set_position(Vector2(-15, 25))
+	ice_node.set_position(Vector2(-15, -125))
 	char_node.add_child(ice_node)
 	
 func _remove_ice_node_from_char_shop_child(char_node: Node) -> void:
