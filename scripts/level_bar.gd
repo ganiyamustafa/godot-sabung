@@ -46,6 +46,7 @@ func _fill_level_bar(emitted_instance_id: int) -> void:
 	
 	if char_node.get_instance_id() == emitted_instance_id:
 		var empty_exp_bars = []
+		#print(char_node.exp)
 		for child in get_children():
 			if child.is_in_group("empty_exp_bar"):
 				empty_exp_bars.append(child)

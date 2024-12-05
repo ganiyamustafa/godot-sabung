@@ -115,25 +115,29 @@ func _add_exp_char(char_node: Node, dragged_char_node: Node) -> void:
 	char_node.exp += dragged_char_node.exp
 	Global.exp_added.emit(char_node_id)
 	
-	if ((char_node.level != dragged_char_node.level and dragged_char_node.level > 1) or (char_node.level > 1 and dragged_char_node.level > 1)) and not dragged_char_node.is_in_group("shop"):
+	if char_node.level > 1 and dragged_char_node.level > 1:
 		char_node.exp += Global.level_up_exp_need[char_level-1]
+	
+	if (dragged_char_node.level > char_node.level) and not dragged_char_node.is_in_group("shop"):
+		char_node.level = char_level
+		Global.level_up_bar.emit(char_node_id)
 
 
 func _level_up_char(char_node: Node, dragged_char_node: Node) -> void:
 	var char_node_id = char_node.get_instance_id()
+	var exp_needed = Global.level_up_exp_need[char_node.level-1]
 	
-	if char_node.exp >= Global.level_up_exp_need[char_node.level-1]:
+	if char_node.exp >= exp_needed:
 		if char_node.level < 2:
-			char_node.exp = abs(Global.level_up_exp_need[char_node.level-1] - char_node.exp + 1)
-			
+			char_node.exp = abs(exp_needed - char_node.exp) + 1
+		
 		char_node.level += 1
-		Global.level_up_bar.emit(char_node_id)
 		
 		if char_node.level >= dragged_char_node.level:
+			print("level up", char_node.level)
 			Global.level_up.emit(char_node_id)
-			
-		if len(Global.level_up_exp_need) >= char_node.level and char_node.exp >= Global.level_up_exp_need[char_node.level-1]:
-			_fusion_char(Vector2(0, 0), dragged_char_node)
+		
+		Global.level_up_bar.emit(char_node_id)
 
 func _fusion_char(at_position: Vector2, data: Variant) -> void:
 	var dragged_original_node = instance_from_id(Global.char_dragged_id)
